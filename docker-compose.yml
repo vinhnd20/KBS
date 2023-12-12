@@ -1,0 +1,18 @@
+  services:
+    postgres:
+      image: postgres:12.4
+      container_name: postgres
+      environment:
+        - POSTGRES_USER=postgres
+        - POSTGRES_PASSWORD=postgres
+        - POSTGRES_DB=mydb
+        - TZ=Asia/Ho_Chi_Minh  # Đặt múi giờ Việt Nam (ICT)
+      volumes:
+        - ./initdb:/docker-entrypoint-initdb.d
+        - pgdata:/var/lib/postgresql/data/
+
+      ports:
+        - 5432:5432
+
+  volumes:
+    pgdata:
